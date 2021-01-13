@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.ffzs.webflux'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 configurations {
     compileOnly {
@@ -16,22 +16,36 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven { url "http://oss.jfrog.org/artifactory/oss-snapshot-local" }
+    jcenter()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.4.1'
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'dev.miku:r2dbc-mysql'
-    runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'io.projectreactor:reactor-test'
+    runtimeOnly 'dev.miku:r2dbc-mysql'
+    runtimeOnly 'mysql:mysql-connector-java'
+    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    compile group: 'com.github.xiaoymin', name: 'knife4j-spring-boot-starter', version: '2.0.2'
+    // https://mvnrepository.com/artifact/com.github.xiaoymin/swagger-bootstrap-ui
+//    compile group: 'com.github.xiaoymin', name: 'swagger-bootstrap-ui', version: '1.9.6'
+    compile group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+// https://mvnrepository.com/artifact/io.springfox/springfox-spring-webflux
+    compile group: 'io.springfox', name: 'springfox-spring-webflux', version: '3.0.0'
+// https://mvnrepository.com/artifact/com.google.guava/guava
+    implementation group: 'com.google.guava', name: 'guava', version: '30.1-jre'
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure-processor', version: '2.4.1'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:2.4.1"
+
 }
 
 test {
     useJUnitPlatform()
 }
+
