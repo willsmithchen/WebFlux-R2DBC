@@ -2,6 +2,9 @@ package com.clj.webflux;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.reactive.config.EnableWebFlux;
+import org.springframework.web.reactive.config.ResourceHandlerRegistry;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
 
 /**
  * @Author lujia chen
@@ -11,7 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Version 1.0.version
  **/
 @SpringBootApplication
-public class R2dbcTestApplication {
+public class R2dbcTestApplication implements WebFluxConfigurer {
 
     public static void main(String[] args) {
         SpringApplication.run(R2dbcTestApplication.class, args);

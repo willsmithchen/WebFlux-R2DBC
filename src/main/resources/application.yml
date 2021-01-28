@@ -12,4 +12,19 @@ spring:
     version: 1.0.0
     terms-of-service-url: http://localhost:8080/doc.html
     base-package: com.clj.webflux.controller
-
+  boot:
+    admin:
+      client:
+        url: http://localhost:8081/love
+        instance:
+          prefer-ip: true
+  application:
+    name: webFlux-r2dbc
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
